@@ -1,0 +1,17 @@
+// Title: Second Highest Salary
+            // Difficulty: Medium
+            // Language: Pandas
+            // Link: https://leetcode.com/problems/second-highest-salary/
+
+import pandas as pd
+
+def second_highest_salary(employee: pd.DataFrame) -> pd.DataFrame:
+    employee = employee.drop_duplicates(subset=['salary'])
+    if len(employee) < 2:
+        return pd.DataFrame({'SecondHighestSalary':[None]})
+    else:
+        employee['sal_rank'] = employee['salary'].rank(ascending=False)
+        second_highest = employee[employee['sal_rank'] == 2]
+        second_highest = second_highest.rename(columns={'salary':'SecondHighestSalary'})
+        return second_highest[['SecondHighestSalary']]
+    
