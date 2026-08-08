@@ -1,0 +1,16 @@
+// Title: Evaluate Reverse Polish Notation
+            // Difficulty: Medium
+            // Language: Python3
+            // Link: https://leetcode.com/problems/evaluate-reverse-polish-notation/
+
+                b = stack.pop()
+                a = stack.pop()
+                
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        stack = []
+        
+        for token in tokens:
+            if token not in "+-*/":
+                stack.append(int(token))
+            else:
